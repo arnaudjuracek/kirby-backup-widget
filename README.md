@@ -99,6 +99,38 @@ c::set('widget.backup.date_format', 'Y-m-d');
 + **default**: `Y-m-d`
 ---
 
+## Security
+
+**It is recommended to limit access to your backup files by placing them behing a firewall.**
+
+Here is a quick way to prevent unauthorised user to download your backups :
+
+###### config.php
+```php
+c::set('routes', [
+  [
+    'pattern' => 'content/backups/(:any)',
+    'action' => function ($file) {
+      if (site()->user()) {
+        // only logged users have access to content/backups files
+        page('backups')->files()->find($file)->download();
+      } else {
+        header::forbidden();
+        die('Unauthorized access');
+      }
+    }
+  ]
+]);
+```
+
+###### .htaccess
+```
+# block backups from being accessed directly
+RewriteRule ^content/backups/(.*)$ index.php [L]
+```
+
+If you want more detail about it, see [how to build an asset firewall](https://getkirby.com/docs/cookbook/asset-firewall).
+
 ## Todo
 
 - [ ] change basic url `?action=` parameters for a more robust widget [routing solution](https://getkirby.com/docs/developer-guide/toolkit/routing)
