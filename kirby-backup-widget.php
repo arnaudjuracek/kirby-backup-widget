@@ -1,4 +1,4 @@
-<?
+<?php
 
   // create and register `content/$destination`
   $kirby = kirby();

@@ -1,4 +1,4 @@
-<?
+<?php
   include __DIR__ . DS . 'kirby-backup-widget.helpers.php';
 
   $archives = site()->find(c::get('widget.backup.destination', 'backups'))->archives()->flip();
@@ -24,23 +24,23 @@
   }
 ?>
 
-<? if ($archives->count()) : ?>
+<?php if ($archives->count()) : ?>
   <ul class="dashboard-items dashboard-box">
-    <? foreach ($archives as $archive) : ?>
+    <?php foreach ($archives as $archive) : ?>
       <li class="dashboard-item">
         <figure>
-          <a title="download <?= $archive->filename() ?>" href="<?= $archive->url() ?>">
+          <a title="download <?php echo $archive->filename() ?>" href="<?php echo $archive->url() ?>">
             <span class="dashboard-item-icon dashboard-item-icon-with-border"><i class="fa fa-download ?>"></i></span>
           </a>
-          <a title="delete <?= $archive->filename() ?>" href="?action=delete&archive=<?= $archive->filename() ?>">
+          <a title="delete <?php echo $archive->filename() ?>" href="?action=delete&archive=<?php echo $archive->filename() ?>">
             <span class="dashboard-item-icon dashboard-item-icon-with-border"><i class="fa fa-trash ?>"></i></span>
           </a>
-          <figcaption class="dashboard-item-text"><?= $archive->filename() ?> (<?= $archive->niceSize() ?>)</figcaption>
+          <figcaption class="dashboard-item-text"><?php echo $archive->filename() ?> (<?php echo $archive->niceSize() ?>)</figcaption>
         </figure>
       </li>
-    <? endforeach ?>
+    <?php endforeach ?>
   </ul>
-<? else : ?>
+<?php else : ?>
   No backup created yet.
   <a href="?action=archive"><b>Backup now</b></a>.
-<? endif ?>
+<?php endif ?>

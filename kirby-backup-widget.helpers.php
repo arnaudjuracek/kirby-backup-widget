@@ -1,4 +1,4 @@
-<?
+<?php
 
   function notify ($message = '') {
     if (c::get('widget.backup.debug', false)) {
