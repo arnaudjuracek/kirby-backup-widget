@@ -25,21 +25,23 @@
 ?>
 
 <?php if ($archives->count()) : ?>
-  <ul class="dashboard-items dashboard-box">
-    <?php foreach ($archives as $archive) : ?>
-      <li class="dashboard-item">
-        <figure>
-          <a title="download <?php echo $archive->filename() ?>" href="<?php echo $archive->url() ?>">
-            <span class="dashboard-item-icon dashboard-item-icon-with-border"><i class="fa fa-download ?>"></i></span>
-          </a>
-          <a title="delete <?php echo $archive->filename() ?>" href="?action=delete&archive=<?php echo $archive->filename() ?>">
-            <span class="dashboard-item-icon dashboard-item-icon-with-border"><i class="fa fa-trash ?>"></i></span>
-          </a>
-          <figcaption class="dashboard-item-text"><?php echo $archive->filename() ?> (<?php echo $archive->niceSize() ?>)</figcaption>
-        </figure>
-      </li>
-    <?php endforeach ?>
-  </ul>
+  <div class="dashboard-box">
+    <ul class="dashboard-items">
+      <?php foreach ($archives as $archive) : ?>
+        <li class="dashboard-item">
+          <figure>
+            <a title="download <?php echo $archive->filename() ?>" href="<?php echo $archive->url() ?>">
+              <span class="dashboard-item-icon dashboard-item-icon-with-border"><i class="fa fa-download ?>"></i></span>
+            </a>
+            <a title="delete <?php echo $archive->filename() ?>" href="?action=delete&archive=<?php echo $archive->filename() ?>">
+              <span class="dashboard-item-icon dashboard-item-icon-with-border"><i class="fa fa-trash ?>"></i></span>
+            </a>
+            <figcaption class="dashboard-item-text"><?php echo $archive->filename() ?> (<?php echo $archive->niceSize() ?>)</figcaption>
+          </figure>
+        </li>
+      <?php endforeach ?>
+    </ul>
+  </div>
 <?php else : ?>
   No backup created yet.
   <a href="?action=archive"><b>Backup now</b></a>.

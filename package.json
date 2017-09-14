@@ -6,7 +6,7 @@
       "type": "git",
       "url": "https://github.com/arnaudjuracek/kirby-backup-widget"
    },
-   "version": "1.1.0",
+   "version": "1.1.1",
    "type": "kirby-plugin",
    "license": "MIT"
 }
