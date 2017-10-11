@@ -17,7 +17,18 @@
 
 Use one of the alternatives below.
 
-### 1. Kirby CLI
+### 1. Using [`kirby-webpack`](https://github.com/brocessing/kirby-webpack)
+
+Simply use the built-in **Kirby Package Manager** by running:
+
+```sh
+$ npm run kirby:add
+$ [?] Git URL: https://github.com/arnaudjuracek/kirby-backup-widget
+$ [?] Module name: kirby-backup-widget
+$ [?] Category: widgets
+```
+
+### 2. Kirby CLI
 
 If you are using the [Kirby CLI](https://github.com/getkirby/cli) you can install this plugin by running the following commands in your shell:
 
@@ -26,7 +37,7 @@ $ cd path/to/kirby
 $ kirby plugin:install arnaudjuracek/kirby-backup-widget
 ```
 
-### 2. Clone or download
+### 3. Clone or download
 
 1. [Clone](https://github.com/arnaudjuracek/kirby-backup-widget.git) or [download](https://github.com/arnaudjuracek/kirby-backup-widget/archive/master.zip)  this repository.
 2. Unzip the archive if needed and rename the folder to `kirby-backup-widget`.
@@ -37,7 +48,7 @@ $ kirby plugin:install arnaudjuracek/kirby-backup-widget
 site/widgets/kirby-backup-widget/
 ```
 
-### 3. Git Submodule
+### 4. Git Submodule
 
 If you know your way around Git, you can download this plugin as a submodule:
 
