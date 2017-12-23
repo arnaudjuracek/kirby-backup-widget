@@ -19,11 +19,20 @@
   }
 
   function archive ($collection, $filename = 'archive.zip') {
-    $files = $collection->count() > 1 ? $collection->pluck('dirname') : [$collection->dirname()];
-    if (c::get('widget.backup.include_site', false)) $files[] = 'site.txt';
+    $files = $collection->pluck('dirname');
+    $roots = kirby()->roots();
 
-    $files = array_map(function ($f) {
-      return kirby()->roots()->content() . DS . $f;
+    if (c::get('widget.backup.include_site', false)) {
+      $files = array_merge($files, array_filter(
+        scandir($roots->content()),
+        function ($f) use ($roots) {
+          return (!is_dir($roots->content() . DS . $f));
+        })
+      );
+    }
+
+    $files = array_map(function ($f) use ($roots) {
+      return $roots->content() . DS . $f;
     }, $files);
 
     if (c::get('widget.backup.debug', false)) {
@@ -32,7 +41,7 @@
       echo '</pre>';
     }
 
-    return zip($files, kirby()->roots()->archives() . DS . $filename, true, c::get('widget.backup.overwrite', true));
+    return zip($files, $roots->archives() . DS . $filename, true, c::get('widget.backup.overwrite', true));
   }
 
   // @SEE https://davidwalsh.name/create-zip-php

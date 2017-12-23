@@ -2,7 +2,7 @@
 <h3 align="center">Kirby panel widget to easily backup your site content.</h3>
 
 <div align="center">
-    <img alt="version" src="https://img.shields.io/badge/version-1.1.1-green.svg?style=flat-square"/>
+    <img alt="version" src="https://img.shields.io/badge/version-1.2.0-green.svg?style=flat-square"/>
     <img alt="kirby_version" src="https://img.shields.io/badge/kirby-2.0+-red.svg?style=flat-square"/>
     <img alt="license" src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square"/>
     <br>
@@ -82,7 +82,7 @@ c::set('widget.backup.exclude', ['error']);
 ```php
 c::set('widget.backup.include_site', false);
 ```
-+ **description**: whether to include `content/site.txt` or not. Set this to `true` if you want to backup this file.
++ **description**: whether to include root files and site options. Set this to `true` if you want to backup your `site.LANG.txt` etc.
 + **default**: `false`
 
 ---
@@ -146,12 +146,7 @@ If you want more detail about it, see [how to build an asset firewall](https://g
 
 - [ ] change basic url `?action=` parameters for a more robust widget [routing solution](https://getkirby.com/docs/developer-guide/toolkit/routing)
 - [ ] add confirmation modal before deleting
-
-## Changelog
-
-**1.0**
-
-- Initial release
+- [ ] swtich to .gitignore like exclude / include path patterns
 
 ## Requirements
 
